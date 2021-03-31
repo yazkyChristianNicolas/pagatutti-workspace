@@ -1,0 +1,99 @@
+<body class="d-block h-100 text-center text-white" cz-shortcut-listen="true">
+    
+    <mat-toolbar class="w-100 toolbar">
+      <span>Pagatutti</span>
+    </mat-toolbar>
+
+
+    <div id="check-id-container" class="container form-container mt-2 p-0 pt-2" >  
+        <h1 class="text-center mt-2">Validación de Identidad</h1>
+
+        <div *ngIf="!isCameraExist">
+          Lo sentimos, necesitas un dispositivo con camara para poder hacer la validación. 
+        </div>
+
+        <div *ngIf="currentOpportunity.id != undefined && isCameraExist">
+          <div class="content p-3" *ngIf="step == 0">
+            <h2> Subí una foto de la imagen del frente de tu DNI. <br> Que sea visible en su totalidad y sin reflejos!</h2>
+  
+            <div class="file-selected p-2 mb-4" *ngIf="fileToUpload != undefined" >
+               <div class="mr-3">{{fileToUpload.name}}</div>
+               <mat-icon aria-hidden="false" aria-label="delete file icon" matTooltip="Remove File Selected" (click)="removeFileIdSelected()" >delete</mat-icon>
+            </div>
+  
+            <h3 *ngIf="loadingMessage != undefined">{{loadingMessage}}</h3>
+      
+  
+            <div class="alert alert-warning mt-3 mb-3 mt-2 " role="alert" *ngIf="checkIdErrorMessage">
+              {{checkIdErrorMessage}}
+           </div>
+  
+            <div class="action-buttons d-block">
+              <div class="form-group" *ngIf="!loading && fileToUpload == undefined">
+                <span>
+                  <input type="file"
+                       id="idFileInput"
+                       accept="image/png, image/jpeg"
+                       (change)="handleFileInput($event.target.files)"
+                       >
+                </span>
+                <label for="idFileInput">Seleccionar Foto</label>
+              </div>
+  
+    
+              <div class="custom-input-file" (click)="enviarIdImage()" *ngIf="fileToUpload != undefined && !loading"> Enviar </div>
+            
+            </div>
+  
+          </div>
+  
+          <div class="content p-3" *ngIf="step == 1">
+            <h2> Ya reconocimos tu DNI <br> Ahora necesitamos una foto tuya de frente.</h2>
+  
+            <div *ngIf="base64FaceImage" class="faceIdContainer mb-4">
+              <img src="data:image/png;base64,{{base64FaceImage}}" alt="Face Image" class="photo-captured"/>
+              <div class="custom-button" style="border-radius: 0;" (click)="removeBase64FaceImage()"> Eliminar</div>
+            </div>
+  
+            <webcam class="cameraView" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+            *ngIf="showWebcam && isCameraExist" [switchCamera]="nextWebcamObservable"></webcam>
+  
+            <div class="alert alert-warning mt-3 mb-3 mt-2 " role="alert" *ngIf="checkIdErrorMessage">
+              {{checkIdErrorMessage}}
+            </div>
+      
+            <h3 *ngIf="loadingMessage != undefined">{{loadingMessage}}</h3>
+  
+            <div class="custom-input-file" (click)="takeSnapshot()" *ngIf="base64FaceImage == undefined"> Tomar foto</div>
+            <div class="custom-input-file" (click)="enviarFaceImage()" *ngIf="base64FaceImage"> Enviar</div>
+          </div>
+          <div class="content p-3" *ngIf="step == 2">
+            <h2> ¡Felicitaciones! <br> Pudimos validar tu identidad. <br> Vas a estar recibiendo un mail con todo el detalle del prestamo.</h2>
+          </div>
+
+        </div>
+
+      <div class="bottom-progress" *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+  </div>
+
+  
+
+
+<!--
+    <div class="checkid-container w-100">
+
+      <webcam class="cameraView" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+      *ngIf="showWebcam && isCameraExist" [captureImageData]="true" [switchCamera]="nextWebcamObservable" [allowCameraSwitch]="multipleCameras"></webcam>
+
+      
+      <button class="custom-button action-button" (click)="changeWebCame(true)" *ngIf="multipleCameras"> Cambiar Camara</button>
+      <button class="custom-button action-button" (click)="takeSnapshot()" > Tomar foto</button>
+
+      <div *ngIf="!isCameraExist">
+          Camera device not available
+      </div>
+    </div>
+-->
+</body>

@@ -1,0 +1,13 @@
+package ar.com.pagatutti.webappback;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class WebappBackApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

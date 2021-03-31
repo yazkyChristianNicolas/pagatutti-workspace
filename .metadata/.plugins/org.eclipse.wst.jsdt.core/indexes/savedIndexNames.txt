@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\Yazky Christian\pagatutti-workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2955871027.index
+2973676997.index
+1835224089.index
+1580628181.index
+1734731479.index
+486068392.index
+3726981558.index

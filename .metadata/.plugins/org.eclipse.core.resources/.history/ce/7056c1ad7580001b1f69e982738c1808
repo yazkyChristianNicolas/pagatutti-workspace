@@ -1,0 +1,5 @@
+package ar.com.pagatutti.apicorebeans.api.request;
+
+public class CheckIDRequestDTO {
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ServletInitializer.java&apos; to &apos;webapp-back/src/main/java/com.pagatutti.webappback&apos;&#x0D;&#x0A;- Original project: &apos;mail-api&apos;&#x0D;&#x0A;- Destination element: &apos;webapp-back/src/main/java/com.pagatutti.webappback&apos;&#x0D;&#x0A;- Original element: &apos;ar.com.yazkychristian.mailapi.ServletInitializer.java&apos;" description="Copy compilation unit" destination="=webapp-back/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.pagatutti.webappback" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;ar.com.yazkychristian.mailapi{ServletInitializer.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1608693281986" units="1" version="1.0"/>
+</session>

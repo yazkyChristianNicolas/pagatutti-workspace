@@ -1,0 +1,5 @@
+package ar.com.pagatutti.apicore.helpers;
+
+public class AppURI {
+
+}

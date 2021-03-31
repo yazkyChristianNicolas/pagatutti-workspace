@@ -1,0 +1,5 @@
+package ar.com.pagatutti.apicore.config;
+
+public class AppConfig {
+
+}

@@ -1,0 +1,149 @@
+@import "variables.scss";
+@import './assets/scss/modules/font';
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$pagatutti-web-front-primary: mat-palette($mat-indigo);
+$pagatutti-web-front-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$pagatutti-web-front-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$pagatutti-web-front-theme: mat-light-theme((
+  color: (
+    primary: $pagatutti-web-front-primary,
+    accent: $pagatutti-web-front-accent,
+    warn: $pagatutti-web-front-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($pagatutti-web-front-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+// font-weight
+$thin:100;
+$light:300;
+$regular:400;
+$bold:700;
+$black:900;
+
+html{
+  height: -webkit-fill-available;
+}
+
+html, body { 
+  margin: 0;
+  padding: 0px;
+}
+
+body { 
+  height: 100%;
+  font-family: $primary_font;
+  //font-family: $primary_font !important;
+  font-size: $primary-fs;
+  //font-weight: $regular;
+}
+
+.input-container{
+  display: grid;
+}
+
+.dark-divider, .acent-divider{
+  border-top-style: solid;
+}
+
+.dark-divider{
+  border-color: $primary-dark;
+  border-top-width: thin;
+}
+
+.acent-divider{
+  border-color: $primary-acent;
+  border-top-width: 0.3em;
+}
+
+.custom-button{
+  color: $primary-dark;
+  background-color: white;
+  border-radius: 2em;
+  border: none;
+  padding: 0.5em 1em 0.5em 1em;
+  &:hover{
+      background-color: $primary-acent;
+      color: white;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.input-group-prepend{
+  span{
+    color: white;
+    background-color: $primary-dark;
+  }
+}
+
+.especial-title{
+  width: fit-content;
+  label,.mat-icon{
+    margin-bottom: 0.2rem;
+  }
+  .mat-icon{
+    color: $primary-acent;;
+    vertical-align: bottom;
+  }
+}
+
+.hiperlink{
+  color: $primary-light;
+  font-weight: 500;
+  &:hover{
+    color: #6ba13c;
+  }
+}
+
+.form-group{
+   font-size: $font-md;
+   font-weight: 500;
+   input, select{
+      font-weight: 500;
+   }
+   select{
+      color: $primary-dark;
+   }
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

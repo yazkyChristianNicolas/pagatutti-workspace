@@ -1,0 +1,336 @@
+<div id="home">
+    <div class="top-line"></div>
+    <div class="container-fluid">
+        <div class="row mt-2 mb-3 mr-xl-5 ml-xl-5 mr-2 ml-2 landind-row">
+          <div class="col-lg-7 pt-lg-5 pb-lg-5 mb-3">
+             <div class="container pb-lg-5 pr-lg-5" *ngIf="step == 0">
+                <img src="assets/logo.png" class="mr-auto d-flex w-75" id="logo">
+                <span class="slogan d-xl-none d-lg-none d-md-none d-sm-none d-xs-none d-block mt-4" *ngIf="step != 0"> Pedí tu crédito ¡Fácil y Rápido!</span>
+                <div class="info-container pb-5 pr-5 d-xl-block d-lg-block  d-md-none d-sm-none d-xs-none">
+                    <div class="main-info">
+                       <div class="especial-title mb-1">
+                           <mat-icon aria-hidden="false">play_arrow</mat-icon><label class="strong">Mínimos Requisitos</label>
+                           <div class="acent-divider"></div>
+                       </div>
+                       <p class="strong">Ingresos mínimos:$6000 | Antiguedad laboral de 4 meses | Mayor de 18 años</p>
+                    </div>
+                    <br>
+                    <br>
+                    <br> 
+                    <p>La Tasa Nominal Anual (TNA), la Tasa Efectiva Anual (TEA) y el Costo Financiero Total Nominal Anual (CFTNA) varían según el perfil crediticio del solicitante del préstamos y el plazo de financiación elegido. En todos los casos, la TNA, TEA y el CFT aplicable serán indormados al momento de ingresar la solicitud del préstamo y antes de su otorgamiento.</p>
+                    <br>
+                    <p>Copyright Pagatutti.com.ar / Todos los Derechos Reservados. <a [routerLink]="['/home']" class="hiperlink"> Términos y condiciones</a> / Dirección </p>
+                    <br>
+                    <div class="badgets-row">
+                        <div class="badgets-flex-container">
+                        <div class="badgets-button-container">
+                            <button mat-fab  aria-label="Example icon button with a delete icon">
+                                <mat-icon svgIcon="instagram" aria-hidden="false" aria-label="Instagram badget SVG icon"></mat-icon>
+                            </button>
+                        </div>
+                        <div class="badgets-button-container">
+                            <button mat-fab aria-label="Example icon button with a bookmark icon">
+                                <mat-icon svgIcon="twitter" aria-hidden="false" aria-label="Twitter badget SVG icon"></mat-icon>
+                            </button>
+                        </div>
+                        <div class="badgets-button-container">
+                            <button mat-fab aria-label="Example icon button with a home icon">
+                                <mat-icon svgIcon="facebook" aria-hidden="false" aria-label="facebook badget SVG icon"></mat-icon>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             <div class="container pb-lg-5 pr-lg-5" *ngIf="step != 0">
+                <img src="assets/logo.png" class="nav-logo w-75">
+
+                <div class="process-message text-center mb-5  d-xl-block d-lg-block  d-md-none d-sm-none d-xs-none">
+                    <img src="assets/iso_ok.png" class="mr-auto ml-auto d-flex">
+                    <span> PEDÍ TU CRÉDITO</span><br>
+                    <span> ¡FÁCIL Y RÁPIDO!</span>
+                </div>
+
+                <div class="info-container pb-5 pr-5 d-xl-block d-lg-block  d-md-none d-sm-none d-xs-none" style="position: fixed;">
+                
+                   <div class="badgets-row">
+                       <div class="badgets-flex-container">
+                       <div class="badgets-button-container">
+                           <button mat-fab  aria-label="Example icon button with a delete icon">
+                               <mat-icon svgIcon="instagram" aria-hidden="false" aria-label="Instagram badget SVG icon"></mat-icon>
+                           </button>
+                       </div>
+                       <div class="badgets-button-container">
+                           <button mat-fab aria-label="Example icon button with a bookmark icon">
+                               <mat-icon svgIcon="twitter" aria-hidden="false" aria-label="Twitter badget SVG icon"></mat-icon>
+                           </button>
+                       </div>
+                       <div class="badgets-button-container">
+                           <button mat-fab aria-label="Example icon button with a home icon">
+                               <mat-icon svgIcon="facebook" aria-hidden="false" aria-label="facebook badget SVG icon"></mat-icon>
+                           </button>
+                       </div>
+                       </div>
+                   </div>
+               </div>
+             </div>
+          </div>
+          <div class="col-lg-5 col-md-12 mt-xs-2 pb-md-0 pb-3  p-xl-2 p-md-2 p-sm-2  p-0 ">
+                <div class="form-container p-xl-5 p-md-5 p-sm-3 p-xs-2 p-3 pb-5">
+                     <form [formGroup]="loanRequestForm" *ngIf="step == 0">
+                        <h1 class="title">Monto Solicitado</h1>
+
+                        <h2>${{monto}}</h2>
+                        
+                        <mat-slider
+                            class="amount-slider mt-1 mb-1 w-100"
+                            [max]="max"
+                            [min]="min"
+                            [step]="sliderStep"
+                            [(ngModel)]="monto"
+                            [ngModelOptions]="{standalone: true}"
+                            >
+                        </mat-slider>
+                        
+                        <div class="row mb-4">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="inputState">Cantidad de cuotas</label>
+                                    <select id="inputState" class="form-control" formControlName="payments"  [ngClass]="{'invalid-input': loanRequestForm.controls.payments.invalid && (loanRequestForm.controls.payments.touched || unCompleteForm) }">
+                                    <option selected value="">seleccione</option>
+                                    <option *ngFor="let cuota of cuotas; index as i;" [value]="cuota">{{cuota}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+
+                        <div class="dark-divider  mb-4"></div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label> Nombre</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="ej: Juan" [ngClass]="{'invalid-input': loanRequestForm.controls.name.invalid && (loanRequestForm.controls.name.touched || unCompleteForm) }" formControlName="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label> Apellido</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="ej: González" formControlName="lastName" [ngClass]="{'invalid-input': loanRequestForm.controls.lastName.invalid && (loanRequestForm.controls.lastName.touched || unCompleteForm) }">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label> DNI</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="ej: 36888776" formControlName="docNumber" pattern="[0-9]*" digitOnly [ngClass]="{'invalid-input': loanRequestForm.controls.docNumber.invalid && (loanRequestForm.controls.docNumber.touched || unCompleteForm) }"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label> Fecha de nacimiento</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  placeholder="ej: dd/mm/aa" formControlName="birthday" [ngClass]="{'invalid-input': loanRequestForm.controls.birthday.invalid && (loanRequestForm.controls.birthday.touched || unCompleteForm) }">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label> Código Area</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="ej: 11" formControlName="areaCode" maxlength="4" pattern="[0-9]*" digitOnly [ngClass]="{'invalid-input': loanRequestForm.controls.areaCode.invalid && (loanRequestForm.controls.areaCode.touched || unCompleteForm) }">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label> Teléfono celular</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">11</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="ej: 40738376" formControlName="phoneNumber" pattern="[0-9]*" digitOnly [ngClass]="{'invalid-input': loanRequestForm.controls.phoneNumber.invalid && (loanRequestForm.controls.phoneNumber.touched || unCompleteForm) }">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="inputState">Actividad</label>
+                                    <select id="inputState" class="form-control" formControlName="individualActivity" [compareWith]="compareFn" [ngClass]="{'invalid-input': loanRequestForm.controls.individualActivity.invalid && (loanRequestForm.controls.individualActivity.touched || unCompleteForm) }">
+                                    <option selected value="">Seleccione</option>
+                                    <option *ngFor="let individualActivity of sortBy(configuration.individualActivities, 'actividad'); index as i;" [ngValue]="individualActivity.id">{{individualActivity.actividad}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="inputState">Banco que te depositan el sueldo</label>
+                                    <select id="inputState" class="form-control" formControlName="bank" [compareWith]="compareFn" [ngClass]="{'invalid-input': loanRequestForm.controls.bank.invalid && (loanRequestForm.controls.bank.touched || unCompleteForm) }">
+                                    <option selected value="">Seleccione</option>
+                                    <option *ngFor="let finantialEntity of sortBy(configuration.financialEntities, 'banco'); index as i;" [ngValue]="finantialEntity.id">{{finantialEntity.banco}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label> Email</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="email" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="ej: jGonzález@gmail.com" formControlName="email" [ngClass]="{'invalid-input': loanRequestForm.controls.email.invalid && (loanRequestForm.controls.email.touched || unCompleteForm) }">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="mr-4">Sexo</label>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" formControlName="genre" id="inlineRadio1" value="M" [ngClass]="{'invalid-input': loanRequestForm.controls.genre.invalid && (loanRequestForm.controls.genre.touched || unCompleteForm) }">
+                                    <label class="form-check-label" for="inlineRadio1">Masculino</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" formControlName="genre" id="inlineRadio2" value="F" [ngClass]="{'invalid-input': loanRequestForm.controls.genre.invalid && (loanRequestForm.controls.genre.touched || unCompleteForm) }">
+                                    <label class="form-check-label" for="inlineRadio2">Femenino</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="termsAndConditions" formControlName="termsAndConditions"  [ngClass]="{'invalid-input': loanRequestForm.controls.termsAndConditions.invalid && (loanRequestForm.controls.termsAndConditions.touched || unCompleteForm) }">
+                                    <label class="form-check-label" for="termsAndConditions">Acepto los <a href="#" class="hiperlink">Terminos y condiciones</a></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-3 mb-0 row mt-2" role="alert" *ngIf="unCompleteForm">
+                            ¡Completa todos los campos!
+                        </div>
+
+                        <div class="footer mt-4">
+                            <button class="custom-button float-right" (click)="enviarSolicitud()" [disabled]="loading"> Enviar Solicitud</button>
+                        </div>
+                    </form>
+                     <div *ngIf="step == 1 && this.loanRequestForm.controls.name.valid && this.loanRequestForm.controls.lastName.valid" id="mobile-code-container" class="pb-5">
+                        <h1 class="title mb-1" style="text-align: left;">Bienvenido</h1>
+                        <h2 style="font-size: 18px;text-align: left;">{{this.loanRequestForm.controls.name.value}} {{this.loanRequestForm.controls.lastName.value}}</h2>
+                        <div class="send-sms-container mt-2 p-3  rounded">
+                            <h3 class="mb-0" style="font-weight: 500; text-align: center;">Ingresa el código sms que recibiste en tu celular</h3>
+                            <h4 class="mb-1" style="text-align: center;">¡Ya te enviamos el código a tu celular!</h4> 
+                            <div class="row mb-3 mt-3">
+                                    <div class="col-3"><input type="text" class="w-100 sms-code rounded" [(ngModel)]="code1" maxlength="1" pattern="[0-9]*" digitOnly  [focusNextInput]="'code_2'" id="code_1" /></div>
+                                    <div class="col-3"><input type="text" class="w-100 sms-code rounded" [(ngModel)]="code2" maxlength="1" pattern="[0-9]*" digitOnly  [focusNextInput]="'code_3'" id="code_2" /></div>
+                                    <div class="col-3"><input type="text" class="w-100 sms-code rounded" [(ngModel)]="code3" maxlength="1" pattern="[0-9]*" digitOnly  [focusNextInput]="'code_4'" id="code_3" /></div>
+                                    <div class="col-3"><input type="text" class="w-100 sms-code rounded" [(ngModel)]="code4" maxlength="1" pattern="[0-9]*" digitOnly id="code_4" /></div>
+                            </div>
+
+                            <span class="w-100 mt-3" style="font-weight: 500; text-align: left;">Reenviar SMS en:</span> <span style="font-weight: 500;color:gray"> {{smsTimeCountdown}} Seg</span>
+                        </div>
+                        
+                        <div class="w-100 mt-4 text-center">
+                            <button class="custom-button" (click)="sendSmsCode()" *ngIf="smsTimeCountdown == 0" [disabled]="loading"> Reenviar Código</button>
+                        </div>
+                    
+                        <div class="dark-divider mt-4"></div>
+
+                        <div class="footer mt-4">
+                            <button class="custom-button float-left" (click)="setStep(0)"> Volver</button>
+                            <button class="custom-button float-right" (click)="validateSmsCode()"> Continuar</button>
+                        </div>
+                     </div>
+
+                     <div *ngIf="step == 3 && currentOpportunity.requestStatus  != undefined">
+                            <div *ngIf="currentOpportunity.approved">
+                                <h1 class="title mb-1" style="text-align: left;">¡FELICITACIONES!</h1>
+                                <h2 style="font-size: 18px;text-align: left;">{{this.loanRequestForm.controls.name.value}} {{this.loanRequestForm.controls.lastName.value}}</h2>
+                                <h2 class="title mb-1 mt-4" style="text-align: left; color: black;">TU CRÉDITO FUE APROBADO</h2>
+                            </div>
+
+                            <div *ngIf="!currentOpportunity.approved">
+                                <h1 class="title mb-1" style="text-align: left;">Lo sentimos..</h1>
+                                <h2 style="font-size: 18px;text-align: left;">{{this.loanRequestForm.controls.name.value}} {{this.loanRequestForm.controls.lastName.value}}</h2>
+                                <h2 class="title mb-1 mt-4" style="text-align: left; color: black;">No hay productos disponibles.</h2>
+                            </div>
+                            
+                            <div class="dark-divider mt-4"></div>
+    
+                            <div class="w-100 mt-4 text-center">
+                                <button class="custom-button pl-5 pr-5" (click)="resetProcess()"> Volver</button>
+                            </div>
+                     </div>
+                     <div *ngIf="loadingMessage">
+                        <h2>{{loadingMessage}}</h2>
+                     </div>
+                </div>
+
+                <div class="mobile-footer d-xl-none d-lg-none d-md-none d-sm-block d-xs-block mt-2">
+                    <div class="pt-2 pb-5 pr-5">
+                        <div class="main-info" *ngIf="step == 0">
+                           <div class="especial-title mb-1">
+                               <mat-icon aria-hidden="false">play_arrow</mat-icon><label class="strong">Mínimos Requisitos</label>
+                               <div class="acent-divider"></div>
+                           </div>
+                           <p class="strong">Ingresos mínimos:$6000 | Antiguedad laboral de 4 meses | Mayor de 18 años</p>
+                        
+                            <br>
+                            <br>
+                            <br> 
+                            <p>La Tasa Nominal Anual (TNA), la Tasa Efectiva Anual (TEA) y el Costo Financiero Total Nominal Anual (CFTNA) varían según el perfil crediticio del solicitante del préstamos y el plazo de financiación elegido. En todos los casos, la TNA, TEA y el CFT aplicable serán indormados al momento de ingresar la solicitud del préstamo y antes de su otorgamiento.</p>
+                            <br>
+                            <p>Copyright Pagatutti.com.ar / Todos los Derechos Reservados. <a [routerLink]="['/home']" class="hiperlink"> Términos y condiciones</a> / Dirección </p>
+                            <br>
+                        </div>  
+                        <div class="badgets-row">
+                            <div class="badgets-flex-container">
+                            <div class="badgets-button-container">
+                                <button mat-fab  aria-label="Example icon button with a delete icon">
+                                    <mat-icon svgIcon="instagram" aria-hidden="false" aria-label="Instagram badget SVG icon"></mat-icon>
+                                </button>
+                            </div>
+                            <div class="badgets-button-container">
+                                <button mat-fab aria-label="Example icon button with a bookmark icon">
+                                    <mat-icon svgIcon="twitter" aria-hidden="false" aria-label="Twitter badget SVG icon"></mat-icon>
+                                </button>
+                            </div>
+                            <div class="badgets-button-container">
+                                <button mat-fab aria-label="Example icon button with a home icon">
+                                    <mat-icon svgIcon="facebook" aria-hidden="false" aria-label="facebook badget SVG icon"></mat-icon>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+        </div>
+    </div>
+    <div class="bottom-progress" *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
+</div>
+

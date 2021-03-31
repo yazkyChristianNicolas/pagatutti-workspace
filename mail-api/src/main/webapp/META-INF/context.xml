@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE root [
+  <!ENTITY CONFIG_HOME "/home/pagatutti/mail-api">
+]>
+<Context>
+	<Environment name='spring.config.location' value='classpath:swagger.properties,&CONFIG_HOME;/application.properties' type='java.lang.String'/>
+	<Environment name="logging.config" value="&CONFIG_HOME;/logback.xml" type="java.lang.String"/>
+</Context>
+

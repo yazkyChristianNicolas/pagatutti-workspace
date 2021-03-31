@@ -1,0 +1,30 @@
+package ar.com.pagatutti.clientapi.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import ar.com.pagatutti.clientapi.api.CreateClientRequest;
+import ar.com.pagatutti.clientapi.services.ClientService;
+
+@RestController()
+@RequestMapping("/client")
+public class ClientController {
+	
+	@Autowired
+	private ClientService clientService;
+	
+	@PostMapping(path="/create")
+	public ResponseEntity<?> createClient(@RequestBody CreateClientRequest createClientRequest){
+		return null;
+	}
+
+	
+	@PostMapping(path="/active")
+	public ResponseEntity<?> activeClient(){
+		return null;
+	}
+}

@@ -1,0 +1,133 @@
+@import "../../variables.scss";
+
+body{
+    background-image: url("../../assets/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100%;
+ }
+
+ .cover-container > main{
+     margin-top: auto;
+     .lead{
+        font-size: xxx-large;
+        font-weight: 400;
+     }
+ }
+
+ .cameraView{
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+.action-button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 50%;
+}
+
+#checkid-container{
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 5px;
+}
+
+.form-container{
+    background-color: rgba(165, 207, 76, 0.5);
+}
+
+
+input[type="file"]#idFileInput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+ 
+label[for="idFileInput"], .custom-input-file {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background-color: $primary;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 10px 30px !important;
+    text-transform: uppercase;
+    width: fit-content;
+    text-align: center;
+}
+
+.file-selected{
+    width: fit-content;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+    background-color: grey;
+}
+
+.toolbar{
+    background-color: $primary-dark;
+    color: white;
+}
+
+.bottom-progress{
+    width: 100%;
+    bottom: 0px;
+    .mat-progress-bar{
+        height: 0.5em;
+    }
+}
+
+.mat-progress-bar-background{
+    fill: white;
+}
+
+.mat-progress-bar-buffer {
+    background-color: white;
+}
+
+.mat-progress-bar-fill::after {
+    background-color: $primary-acent;
+}
+
+.alert{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-captured{
+    height: 300px;
+    width: 350px;
+}
+
+.webcam-wrapper > video{
+    height: 400px;
+    width: 400px;
+}
+
+.faceIdContainer{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+   
+
+    body{
+        background-image: url("../../assets/backgroun-mb.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: auto;
+    }
+}
