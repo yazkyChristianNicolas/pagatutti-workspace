@@ -1,12 +1,5 @@
 @import "../../variables.scss";
 
-body{
-    background-image: url("../../assets/background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100%;
- }
-
  .cover-container > main{
      margin-top: auto;
      .lead{
@@ -36,8 +29,8 @@ body{
     border-radius: 5px;
 }
 
-.form-container{
-    background-color: rgba(165, 207, 76, 0.5);
+.form-container {
+    background-color: rgba(165, 207, 76, 0.9 );
 }
 
 
@@ -50,7 +43,8 @@ input[type="file"]#idFileInput {
     z-index: -1;
 }
  
-label[for="idFileInput"], .custom-input-file {
+//label[for="idFileInput"],
+ .custom-input-file {
     font-size: 12px;
     font-weight: 600;
     color: #fff;
@@ -106,11 +100,11 @@ label[for="idFileInput"], .custom-input-file {
 
 .photo-captured{
     height: 300px;
-    width: 350px;
+    width: 400px;
 }
 
 .webcam-wrapper > video{
-    height: 400px;
+    height: 300px;
     width: 400px;
 }
 
@@ -120,14 +114,25 @@ label[for="idFileInput"], .custom-input-file {
     margin-right: auto;
 }
 
+.custom-button{
+    width: fit-content;
+}
+
+.white-bold{
+    font-size: medium;
+    font-weight: bold;
+}
+
  /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
    
-
-    body{
-        background-image: url("../../assets/backgroun-mb.jpeg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: auto;
+    .photo-captured{
+        height: 250px;
+        width: 100%;
+    }
+    
+    .webcam-wrapper > video {
+        height: 250px;
+        width: 100%;
     }
 }

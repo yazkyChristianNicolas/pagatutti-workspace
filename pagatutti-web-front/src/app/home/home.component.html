@@ -158,9 +158,6 @@
                                 <div class="form-group">
                                     <label> Teléfono celular</label>
                                     <div class="input-group input-group-sm mb-3">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">11</span>
-                                        </div>
                                         <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="ej: 40738376" formControlName="phoneNumber" pattern="[0-9]*" digitOnly [ngClass]="{'invalid-input': loanRequestForm.controls.phoneNumber.invalid && (loanRequestForm.controls.phoneNumber.touched || unCompleteForm) }">
                                     </div>
                                 </div>
@@ -263,17 +260,27 @@
                         </div>
                      </div>
 
-                     <div *ngIf="step == 3 && currentOpportunity.requestStatus  != undefined">
-                            <div *ngIf="currentOpportunity.approved">
-                                <h1 class="title mb-1" style="text-align: left;">¡FELICITACIONES!</h1>
-                                <h2 style="font-size: 18px;text-align: left;">{{this.loanRequestForm.controls.name.value}} {{this.loanRequestForm.controls.lastName.value}}</h2>
-                                <h2 class="title mb-1 mt-4" style="text-align: left; color: black;">TU CRÉDITO FUE APROBADO</h2>
+                    <div *ngIf="step == 3 && currentOpportunity.requestStatus  != undefined">
+                            <div class="result-container" *ngIf="currentOpportunity.approved"> 
+                                <div class="icon-container">
+                                    <img src="../../assets/surprise.png" class="w-25 icon">
+                                    <div class="client-message pl-3">
+                                        <h1 class="mb-1 mt-4">¡FELICITACIONES!</h1>
+                                        <p style="font-size: 18px;" class="w-100 h3"> {{this.loanRequestForm.controls.name.value}} {{this.loanRequestForm.controls.lastName.value}}</p>
+                                    </div>
+                                </div>
+                                <p class="mb-1 mt-4 w-100 h4"  style="color: black;">TU CRÉDITO FUE APROBADO</p>
                             </div>
 
-                            <div *ngIf="!currentOpportunity.approved">
-                                <h1 class="title mb-1" style="text-align: left;">Lo sentimos..</h1>
-                                <h2 style="font-size: 18px;text-align: left;">{{this.loanRequestForm.controls.name.value}} {{this.loanRequestForm.controls.lastName.value}}</h2>
-                                <h2 class="title mb-1 mt-4" style="text-align: left; color: black;">No hay productos disponibles.</h2>
+                            <div class="result-container" *ngIf="!currentOpportunity.approved"> 
+                                <div class="icon-container">
+                                    <img src="../../assets/sad.png" class="w-25 icon">
+                                    <div class="client-message pl-3">
+                                        <h1 class="mb-1 mt-4 h5">¡Lo sentimos!</h1>
+                                        <p style="font-size: 18px;" class="w-100 h3"> {{this.loanRequestForm.controls.name.value}} {{this.loanRequestForm.controls.lastName.value}}</p>
+                                    </div>
+                                </div>
+                                <p class="mb-1 mt-4 w-100 h5"  style="color: red;">En este momento no contamos con productos para vos. Podes intentarlo nuevamente más adelante.</p>
                             </div>
                             
                             <div class="dark-divider mt-4"></div>

@@ -1,5 +1,0 @@
-api-core.client.masterTable = http://localhost:8081/admin/master-tables
-api-core.client.opportunity = http://localhost:8081/opportunity
- 
-#api-core.client.masterTable = http://pagatutti-desa-core.azurewebsites.net/admin/master-tables
-#api-core.client.opportunity = http://pagatutti-desa-core.azurewebsites.net/opportunity

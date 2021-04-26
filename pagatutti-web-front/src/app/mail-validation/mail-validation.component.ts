@@ -3,6 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, filter } from 'rxjs/operators';
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatIconRegistry} from '@angular/material/icon';
 import { IndividualOpportunity } from '../models/individual-opportunity';
 import { ApiService } from '../services/api.service';
 
@@ -20,6 +22,8 @@ export class MailValidationComponent implements OnInit {
   multipleCameras = false;
   showWebcam = true;
   errors: WebcamInitError[] = [];
+  maxImageSize: 6;
+  alreadyValidated = false;
 
   base64IdImage= undefined;
   base64FaceImage= undefined;
@@ -39,7 +43,12 @@ export class MailValidationComponent implements OnInit {
   // Check Email settings
   token: string;
   mailValid = true;
-  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
+
+  constructor(iconRegistry: MatIconRegistry, private route: ActivatedRoute, private apiService: ApiService, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon('facebook', sanitizer.bypassSecurityTrustResourceUrl('assets/facebook.svg'));
+    iconRegistry.addSvgIcon('instagram', sanitizer.bypassSecurityTrustResourceUrl('assets/instagram.svg'));
+    iconRegistry.addSvgIcon('twitter', sanitizer.bypassSecurityTrustResourceUrl('assets/twitter.svg'));
+  }
 
   ngOnInit() {
     this.loading = true;
@@ -68,6 +77,7 @@ export class MailValidationComponent implements OnInit {
           console.log(response);
           this.clearLoading();
           this.currentOpportunity = response["body"];
+          this.alreadyValidated = (null != this.currentOpportunity.checkId && this.currentOpportunity.checkId.result == "Validado" && this.currentOpportunity.checkId.misma_persona == 'true');
         });
       }
     });
@@ -105,13 +115,19 @@ export class MailValidationComponent implements OnInit {
   }
 
   handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-    console.log(this.fileToUpload);
+    console.log("File in MB "  + files.item(0).size/1024/1024 )
+    if(files.item(0).size/1024/1024 > this.maxImageSize){
+      this.checkIdErrorMessage = "La imagen no puede superar los 6MB."
+    }else{
+      this.fileToUpload = files.item(0);
+      console.log(this.fileToUpload);
+    }
   }
 
   removeBase64FaceImage(){
     if(!this.loading){
       this.base64FaceImage = null;
+      this.showWebcam = true;
     }
   }
 

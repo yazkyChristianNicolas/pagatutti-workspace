@@ -68,14 +68,21 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/sms-api-client"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/siisa-client"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/sms-api"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/sms-api-beans"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/encriptor"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/api-core-client/api-core-client"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/api-core-beans"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/api-core/api-core"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/webapp-back"/>
+			<item value="/Users/antoyazky/Documents/Nicolas/pagatutti-workspace/api-commons"/>
 			<item value="C:\Users\Yazky Christian\pagatutti-workspace\api-core-client\api-core-client"/>
 			<item value="C:\Users\Yazky Christian\pagatutti-workspace\api-core\api-core"/>
 			<item value="C:\Users\Christian\pagatutti-workspace\siisa-rest-client"/>
 			<item value="C:\Users\Christian\pagatutti-workspace\siisa-client"/>
 			<item value="C:\Users\Christian\pagatutti-workspace\api-core-client"/>
-			<item value="C:\Users\Christian\pagatutti-workspace\middleware-mb"/>
-			<item value="C:\Users\Christian\pagatutti-workspace\webapp-back"/>
-			<item value="C:\Users\Christian\pagatutti-workspace\encriptor"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
